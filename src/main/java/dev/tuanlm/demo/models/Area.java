@@ -41,4 +41,9 @@ public class Area {
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	private Collection<UserAccount> users;
+	
+	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	private Collection<People> peoples;
 }

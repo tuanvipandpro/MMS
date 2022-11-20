@@ -47,6 +47,7 @@ public class AccountServiceImp implements AccountService, UserDetailsService{
 				? new LoginResponse(
 						JwtUtils.generateJwtToken(request.getUsername()), 
 						request.getUsername(), 
+						ua.getArea().getId(),
 						ua.getArea().getName(),
 						ua.getArea().getDetails())
 				: null;

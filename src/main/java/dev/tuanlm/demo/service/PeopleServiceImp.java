@@ -1,6 +1,7 @@
 package dev.tuanlm.demo.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import dev.tuanlm.demo.mapper.PeopleMapper;
 import dev.tuanlm.demo.models.Area;
 import dev.tuanlm.demo.models.People;
 import dev.tuanlm.demo.models.PeopleAreaModel;
@@ -24,8 +26,9 @@ import lombok.AllArgsConstructor;
 public class PeopleServiceImp implements PeopleService {
 	
 	private PeopleRepository peopleRepository;
+	private PeopleMapper peopleMapper;
 
-	@Override
+	@Deprecated
 	public GetPeopleResponse getByAreaPaging(int area_id, int pageNum, int pageNo) {		
 		List<PeopleAreaModel> peopleAreas = new ArrayList<>();
 			
@@ -56,6 +59,20 @@ public class PeopleServiceImp implements PeopleService {
 		model.setArea_id(addP.getArea().getId());
 		
 		return model;
+	}
+
+	@Override
+	public GetPeopleResponse getPeople(int area_id, int pageNum, int pageNo, String fullname, String quarter, Date from,
+			Date to) {
+		
+		if (fullname != null && !fullname.isBlank()) {
+			fullname = "%" + fullname + "%";
+		}
+		return new GetPeopleResponse(
+				peopleMapper.getPeople(area_id, pageNum*pageNo, pageNum, fullname, quarter, from, to), 
+				peopleMapper.countPeople(area_id, fullname, quarter, from, to), 
+				pageNum, 
+				pageNo);
 	}
 
 }

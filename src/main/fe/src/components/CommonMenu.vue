@@ -17,7 +17,7 @@
             <el-icon><setting /></el-icon>
             <span>Cài đặt</span>
           </template>
-          <el-menu-item index="2-2" @click="transitTo('/')">Đăng xuất</el-menu-item>
+          <el-menu-item index="2-2" @click="logout">Đăng xuất</el-menu-item>
         </el-sub-menu>
       </el-menu>
   </div>
@@ -30,8 +30,14 @@ import {
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
 const transitTo = (screen) => {
   router.push(screen)
+}
+
+const logout = () => {
+  sessionStorage.removeItem('user')
+  transitTo('/')
 }
 </script>
 <style scoped>

@@ -10,7 +10,13 @@
       <div class="flex">
         <el-input v-model="username" size="large" placeholder="Username ..." style="margin-bottom: 10px;"/>
         <el-input v-model="password" size="large" placeholder="Password ..." style="margin-bottom: 10px;" show-password/>
-        <el-button :icon="UserFilled" @click="handleClick" color="#626aef" class="button" size="large" plain>Đăng nhập</el-button>
+        <el-button
+          v-loading.fullscreen.lock="loading"
+          :icon="UserFilled" @click="handleClick"
+          color="#626aef" class="button"
+           size="large" plain>
+           Đăng nhập
+        </el-button>
       </div>
     </el-card>
   </div>
@@ -26,9 +32,11 @@ import { useUserStore } from '../stores/user'
 
 const username = ref('')
 const password = ref('')
+const loading = ref(false)
 const router = useRouter()
 
 const handleClick = async () => {
+  loading.value = true
   try {
     if (username.value && password.value) {
       await useUserStore().login(username.value, password.value)
@@ -38,6 +46,8 @@ const handleClick = async () => {
   } catch (e) {
     ElMessage.error('The user is invalid !!!')
     console.error(e)
+  } finally {
+    loading.value = false
   }
 }
 

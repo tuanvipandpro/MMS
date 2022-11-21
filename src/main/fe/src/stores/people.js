@@ -11,14 +11,18 @@ export const usePeopleStore = defineStore('people', {
     // TODO
   },
   actions: {
-    async getPeople (pageNo, pageNum) {
+    async getPeople (fullname, quarter, from, to, pageNo, pageNum) {
       const url = `${API}/get`
       const user = JSON.parse(sessionStorage.getItem('user'))
       const res = await axios.get(url, {
         params: {
           pageNo: pageNo,
           pageNum: pageNum,
-          areaId: user.area_id
+          areaId: user.area_id,
+          fullname: fullname,
+          quarter: quarter,
+          from: from,
+          to: to
         }
       })
 

@@ -2,14 +2,14 @@
   <div>
     <el-container>
       <el-aside style="width: 18vw">
-        <Menu></Menu>
+        <Menu default-active="1"></Menu>
       </el-aside>
       <el-container>
         <el-main>
-          <div style="margin-bottom: 4px; display: flex">
+          <div style="margin-bottom: 10px; display: flex">
             <el-input
               v-model="search"
-              style="width: 18vw;"
+              style="width: 18vw; margin-right: 3px;"
               placeholder="Nhập tên"
               clearable
             >
@@ -17,7 +17,7 @@
                 <el-icon class="el-input__icon" @click="searchByFullname"><Search /></el-icon>
               </template>
             </el-input>
-            <el-select v-model="quarterSelect" clearable placeholder="Chọn khu phố" style="width: 12vw">
+            <el-select v-model="quarterSelect" clearable placeholder="Chọn khu phố" style="width: 12vw; margin-right: 3px;">
               <el-option
                 v-for="item in quarterData"
                 :key="item.id"
@@ -31,15 +31,23 @@
               range-separator="-"
               start-placeholder="Ngày bắt đầu"
               end-placeholder="Ngày kết thúc"
+              style="margin-right: 10vw;"
             />
+            <el-button type="success" plain>Thêm mới</el-button>
           </div>
+          <el-descriptions border>
+              <el-descriptions-item>
+                <template #label>Tổng cộng</template>
+                {{total}}
+              </el-descriptions-item>
+            </el-descriptions>
           <el-table
             :data="tableData"
             highlight-current-row
             border
             v-loading="tableLoading"
             stripe
-            style="width: 100%; height: 37vh"
+            style="width: 100%; height: 55vh"
           >
           <el-table-column type="selection" width="55" />
             <el-table-column prop="id" label="ID" width="80" />
@@ -47,6 +55,15 @@
             <el-table-column prop="birth" label="Ngày sinh" />
             <el-table-column prop="address" label="Địa chỉ" />
             <el-table-column prop="quarter" label="Khu phố"/>
+            <el-table-column  label="Thao tác">
+              <template #header>
+                <div class="cell">Thao tác</div>
+              </template>
+              <template #default="scope">
+                <el-button type="primary" @click="handleEdit(scope.$index, scope.row)" plain>Cập nhật</el-button>
+                <el-button type="danger" @click="handleDelete(scope.$index, scope.row)">Xóa</el-button>
+              </template>
+            </el-table-column>
           </el-table>
           <el-pagination
             background

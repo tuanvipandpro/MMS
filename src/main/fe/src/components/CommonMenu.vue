@@ -14,13 +14,14 @@
         </el-menu-item>
         <el-menu-item index="2" @click="transitTo('/document')">
           <el-icon><Document /></el-icon>
-          <span>Quản lý hồ sơ</span>
+          <span>Quản lý văn bản</span>
         </el-menu-item>
         <el-sub-menu index="3">
           <template #title>
             <el-icon><setting /></el-icon>
             <span>Cài đặt</span>
           </template>
+          <el-menu-item index="3-1" @click="transitTo('/list')">Danh sách của bạn</el-menu-item>
           <el-menu-item index="3-2" @click="logout">Đăng xuất</el-menu-item>
         </el-sub-menu>
       </el-menu>

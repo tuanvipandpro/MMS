@@ -6,10 +6,7 @@
       </el-aside>
       <el-container>
         <el-main>
-          <div>
-            <h1>Quản lý văn bản</h1>
-            <el-button  type="success" plain :icon="Plus">Thêm mới</el-button>
-          </div>
+          <h1>Document</h1>
         </el-main>
       </el-container>
     </el-container>
@@ -17,7 +14,6 @@
 </template>
 <script setup>
 import Menu from '../components/CommonMenu.vue'
-import { Plus } from '@element-plus/icons-vue'
 import { onBeforeUnmount } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'

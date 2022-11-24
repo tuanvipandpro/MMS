@@ -33,12 +33,12 @@
               end-placeholder="Ngày kết thúc"
               style="margin-right: 10vw;"
             />
-            <el-button type="success" plain>Thêm mới</el-button>
+            <el-button type="success" plain :icon="Plus">Thêm mới</el-button>
           </div>
           <el-descriptions border>
               <el-descriptions-item>
                 <template #label>Tổng cộng</template>
-                {{total}}
+                  <strong>{{total}}</strong> thanh niên
               </el-descriptions-item>
             </el-descriptions>
           <el-table
@@ -60,8 +60,16 @@
                 <div class="cell">Thao tác</div>
               </template>
               <template #default="scope">
-                <el-button type="primary" @click="handleEdit(scope.$index, scope.row)" plain>Cập nhật</el-button>
-                <el-button type="danger" @click="handleDelete(scope.$index, scope.row)">Xóa</el-button>
+                <el-button type="info" :icon="Edit" @click="handleEdit(scope.$index, scope.row)" plain></el-button>
+                <el-popconfirm
+                  confirm-button-text="Yes"
+                  cancel-button-text="No"
+                  title="Bạn có chắc chắn muốn xóa ?"
+                >
+                  <template #reference>
+                    <el-button type="danger" :icon="Delete" @click="handleDelete(scope.$index, scope.row)"></el-button>
+                  </template>
+                </el-popconfirm>
               </template>
             </el-table-column>
           </el-table>
@@ -76,6 +84,9 @@
       </el-container>
     </el-container>
   </div>
+  <el-dialog v-model="updateDialog" title="Cập nhật">
+    dsd
+  </el-dialog>
 </template>
 <script setup>
 
@@ -83,12 +94,13 @@ import moment from 'moment'
 import Menu from '../components/CommonMenu.vue'
 import { usePeopleStore } from '../stores/people'
 import { useAreaStore } from '../stores/area'
-import { Search } from '@element-plus/icons-vue'
+import { Search, Plus, Edit, Delete } from '@element-plus/icons-vue'
 import { onBeforeMount, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
+const date = ref('')
 const total = ref('')
 const pageNo = ref(1)
 const pageNum = ref(5)
@@ -97,27 +109,7 @@ const tableData = ref('')
 const quarterData = ref('')
 const quarterSelect = ref('')
 const tableLoading = ref(true)
-const date = ref('')
-
-const searchByFullname = async () => {
-  const fullnameSearch = search.value ? search.value : undefined
-  const quarterSearch = quarterSelect.value ? quarterSelect.value : undefined
-  const from = date.value ? moment(date.value[0]).format('yyyy-MM-DD') : undefined
-  const to = date.value ? moment(date.value[1]).format('yyyy-MM-DD') : undefined
-
-  tableLoading.value = true
-  handlePeopleResponse(await usePeopleStore().getPeople(fullnameSearch, quarterSearch, from, to, pageNo.value - 1, pageNum.value))
-}
-
-const handlePeopleResponse = (peopleResponse) => {
-  total.value = +peopleResponse.total
-  tableData.value = peopleResponse.peoples.map(p => {
-    p.birth = moment(p.birthdate).format('DD-MM-yyyy')
-    p.dAddress = `${p.address}, KP.${p.quarter}`
-    return p
-  })
-  tableLoading.value = false
-}
+const updateDialog = ref(false)
 
 onBeforeMount(async () => {
   if (!sessionStorage.getItem('user')) {
@@ -129,6 +121,30 @@ onBeforeMount(async () => {
   quarterData.value = await useAreaStore().getQuarter()
   handlePeopleResponse(await usePeopleStore().getPeople(undefined, undefined, undefined, undefined, pageNo.value - 1, pageNum.value))
 })
+
+const handlePeopleResponse = (peopleResponse) => {
+  total.value = +peopleResponse.total
+  tableData.value = peopleResponse.peoples.map(p => {
+    p.birth = moment(p.birthdate).format('DD-MM-yyyy')
+    p.dAddress = `${p.address}, KP.${p.quarter}`
+    return p
+  })
+  tableLoading.value = false
+}
+
+const searchByFullname = async () => {
+  const fullnameSearch = search.value ? search.value : undefined
+  const quarterSearch = quarterSelect.value ? quarterSelect.value : undefined
+  const from = date.value ? moment(date.value[0]).format('yyyy-MM-DD') : undefined
+  const to = date.value ? moment(date.value[1]).format('yyyy-MM-DD') : undefined
+
+  tableLoading.value = true
+  handlePeopleResponse(await usePeopleStore().getPeople(fullnameSearch, quarterSearch, from, to, pageNo.value - 1, pageNum.value))
+}
+
+const handleEdit = async (index, row) => {
+  updateDialog.value = true
+}
 
 </script>
 <style scoped>

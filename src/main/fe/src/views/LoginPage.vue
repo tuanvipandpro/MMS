@@ -40,7 +40,7 @@ const handleClick = async () => {
   try {
     if (username.value && password.value) {
       await useUserStore().login(username.value, password.value)
-      ElMessage.success('Login OK')
+      ElMessage.success(`Xin chào ${username.value}`)
       router.push('home')
     }
   } catch (e) {

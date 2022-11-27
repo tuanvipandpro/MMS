@@ -21,7 +21,7 @@
             <el-icon><setting /></el-icon>
             <span>Cài đặt</span>
           </template>
-          <el-menu-item index="3-1" @click="transitTo('/list')">Danh sách của bạn</el-menu-item>
+          <el-menu-item index="3-1" @click="transitTo('/folder')">Danh sách của bạn</el-menu-item>
           <el-menu-item index="3-2" @click="logout">Đăng xuất</el-menu-item>
         </el-sub-menu>
       </el-menu>

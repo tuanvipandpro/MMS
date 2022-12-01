@@ -3,9 +3,11 @@ package dev.tuanlm.demo.mapper;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import dev.tuanlm.demo.models.PeopleAreaModel;
 
@@ -102,4 +104,102 @@ public interface PeopleMapper {
 					@Param("quarter") String quarter, 
 					@Param("from") Date from, 
 					@Param("to") Date to);
+	
+	@Insert("<script> "
+			+ "INSERT INTO "
+			+ "			people( "
+			+ "				fullname, "
+			+ "				birthdate, "
+			+ "				address, "
+			+ "				quarter, "
+			+ "				career, "
+			+ "				workplace, "
+			+ "				religion, "
+			+ "				organization, "
+			+ "				family, "
+			+ "				self, "
+			+ "				education, "
+			+ "				level, "
+			+ "				language, "
+			+ "				ethnic, "
+			+ "				phone, "
+			+ "				m_fullname, "
+			+ "				m_birthdate, "
+			+ "				m_career, "
+			+ "				d_fullname, "
+			+ "				d_birthdate, "
+			+ "				d_career, "
+			+ "				note, "
+			+ "				area_id, "
+			+ "				education_details) "
+			+ "VALUES ("
+			+ "			#{p.fullname}, "
+			+ "			#{p.birthdate}, "
+			+ "			#{p.address}, "
+			+ "			#{p.quarter}, "
+			+ "			#{p.career}, "
+			+ "			#{p.workplace}, "
+			+ "			#{p.religion}, "
+			+ "			#{p.organization}, "
+			+ "			#{p.family}, "
+			+ "			#{p.self}, "
+			+ "			#{p.education}, "
+			+ "			#{p.level}, "
+			+ "			#{p.language}, "
+			+ "			#{p.ethnic}, "
+			+ "			#{p.phone}, "
+			+ "			#{p.m_fullname}, "
+			+ "			#{p.m_birthdate}, "
+			+ "			#{p.m_career}, "
+			+ "			#{p.d_fullname}, "
+			+ "			#{p.d_birthdate}, "
+			+ "			#{p.d_career}, "
+			+ "			#{p.note}, "
+			+ "			#{p.area_id}, "
+			+ "			#{p.education_details} "
+			+ ") "
+			+ "</script>")
+	int insertPeople(@Param("p") PeopleAreaModel people);
+	
+	@Update("<script> "
+			+ "UPDATE "
+			+ "			people "
+			+ "SET "
+			+ "			fullname = #{p.fullname}, "
+			+ "			birthdate= #{p.birthdate}, "
+			+ "			address = #{p.address}, "
+			+ "			quarter = #{p.quarter}, "
+			+ "			career = #{p.career}, "
+			+ "			workplace = #{p.workplace}, "
+			+ "			religion = #{p.religion}, "
+			+ "			organization = #{p.organization}, "
+			+ "			family = #{p.family}, "
+			+ "			self = #{p.self}, "
+			+ "			education = #{p.education}, "
+			+ "			level = #{p.level}, "
+			+ "			language = #{p.language}, "
+			+ "			ethnic = #{p.ethnic}, "
+			+ "			phone = #{p.phone}, "
+			+ "			m_fullname = #{p.m_fullname}, "
+			+ "			m_birthdate = #{p.m_birthdate}, "
+			+ "			m_career = #{p.m_career}, "
+			+ "			d_fullname = #{p.d_fullname}, "
+			+ "			d_birthdate = #{p.d_birthdate}, "
+			+ "			d_career = #{p.d_career}, "
+			+ "			note = #{p.note}, "
+			+ "			education_details = #{p.education_details} "
+			+ "WHERE "
+			+ "			id = #{p.id}"
+			+ "</script>")
+	int updatePeople(@Param("p") PeopleAreaModel p);
+	
+	@Update("<script> "
+			+ "UPDATE "
+			+ "			people "
+			+ "SET "
+			+ "			active = false "
+			+ "WHERE "
+			+ "			id = #{id}"
+			+ "</script>")
+	int deletePeople(@Param("id")int id);
 }

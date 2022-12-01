@@ -75,4 +75,19 @@ public class PeopleServiceImp implements PeopleService {
 				pageNo);
 	}
 
+	@Override
+	public int updatePeople(PeopleAreaModel p) {
+		return peopleMapper.updatePeople(p);
+	}
+
+	@Override
+	public int deletePeople(int people_id) {
+		return peopleMapper.deletePeople(people_id);
+	}
+
+	@Override
+	public int insertPeople(PeopleAreaModel p) {
+		return peopleMapper.insertPeople(p);
+	}
+
 }

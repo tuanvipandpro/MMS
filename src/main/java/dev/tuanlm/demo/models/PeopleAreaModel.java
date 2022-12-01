@@ -2,6 +2,11 @@ package dev.tuanlm.demo.models;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,22 +18,30 @@ public class PeopleAreaModel {
 
 	private int id;
 	
+	@NotBlank
 	private String fullname;
 	
+	@NotNull
+	@DateTimeFormat(pattern = "yyyy-dd-mm")
 	private Date birthdate;
 	
+	@NotBlank
 	private String address;
 	
+	@NotBlank
 	private String quarter;
 	
 	private String area_name;
 	
-	private int area_id;
+	@NotNull
+	private Integer area_id;
 	
+	@NotBlank
 	private String career;
 	
 	private String workplace;
 	
+	@NotBlank
 	private String ethnic;
 	
 	private String religion;
@@ -41,7 +54,8 @@ public class PeopleAreaModel {
 	
 	private String language;
 	
-	private int level;
+	@NotNull
+	private Integer level;
 	
 	private String education;
 	
@@ -51,12 +65,14 @@ public class PeopleAreaModel {
 	
 	private String m_fullname;
 	
+	@DateTimeFormat(pattern = "yyyy-dd-mm")
 	private Date m_birthdate;
 	
 	private String m_career;
 	
 	private String d_fullname;
 	
+	@DateTimeFormat(pattern = "yyyy-dd-mm")
 	private Date d_birthdate;
 	
 	private String d_career;

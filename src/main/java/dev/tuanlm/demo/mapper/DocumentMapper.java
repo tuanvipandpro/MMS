@@ -3,9 +3,11 @@ package dev.tuanlm.demo.mapper;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import dev.tuanlm.demo.models.Document;
 
@@ -31,6 +33,7 @@ public interface DocumentMapper {
 			+ "		D.active						AS active, "
 			+ "		D.agency_issued					AS agency_issued, "
 			+ "		D.signed						AS signed, "
+			+ "		D.return_date					AS return_date, "
 			+ "		D.receive_num					AS receive_num "
 			+ "FROM "
 			+ "		document 						AS D,  "
@@ -51,4 +54,85 @@ public interface DocumentMapper {
 			@Param("from") LocalDate from, 
 			@Param("to") LocalDate to, 
 			@Param("area_id") int area_id);
+	
+	@Insert("<script> "
+			+ "INSERT INTO "
+			+ "			document("
+			+ "					code, "
+			+ "					type, "
+			+ "					date, "
+			+ "					title, "
+			+ "					pages, "
+			+ "					copies, "
+			+ "					secret, "
+			+ "					recipients, "
+			+ "					notes, "
+			+ "					user_id, "
+			+ "					create_date, "
+			+ "					agency_issued,"
+			+ "					return_date, "
+			+ "					signed, "
+			+ "					receive_num)"
+			+ "VALUES ( "
+			+ "					#{document.code}, "
+			+ "					#{document.type}, "
+			+ "					#{document.date}, "
+			+ "					#{document.title}, "
+			+ "					#{document.pages}, "
+			+ "					#{document.copies}, "
+			+ "					#{document.secret}, "
+			+ "					#{document.recipients}, "
+			+ "					#{document.notes}, "
+			+ "					#{document.user_id}, "
+			+ "					#{document.create_date}, "
+			+ "					#{document.agency_issued},"
+			+ "					#{document.return_date}, "
+			+ "					#{document.signed}, "
+			+ "					#{document.receive_num} "
+			+ ") "
+			+ "</script>")
+	int insertDocument(@Param("document") Document document);
+	
+	@Update("<script> "
+			+ "UPDATE "
+			+ "					document "
+			+ "SET "
+			+ "					code = #{doc.code}, "
+			+ "					date = #{doc.date}, "
+			+ "					title = #{doc.title}, "
+			+ "					pages = #{doc.pages}, "
+			+ "					copies = #{doc.copies}, "
+			+ "					secret = #{doc.secret}, "
+			+ "<if test=\"doc.recipients != null \"> "
+			+ "					recipients = #{doc.recipients}, "
+			+ "</if> "
+			+ "<if test=\"doc.notes != null \"> "
+			+ "					notes = #{doc.notes}, "
+			+ "</if> "
+			+ "<if test=\"doc.agency_issued != null \"> "
+			+ "					agency_issued = #{doc.agency_issued}, "
+			+ "</if> "
+			+ "<if test=\"doc.return_date != null \"> "
+			+ "					return_date = #{doc.return_date}, "
+			+ "</if> "
+			+ "<if test=\"doc.signed != null \"> "
+			+ "					signed = #{doc.signed}, "
+			+ "</if> "
+			+ "<if test=\"doc.receive_num != null \"> "
+			+ "					receive_num = #{doc.receive_num} "
+			+ "</if> "
+			+ "WHERE "
+			+ "			id = #{doc.id}"
+			+ "</script>")
+	int updateDocument(@Param("doc") Document doc);
+	
+	@Update("<script> "
+			+ "UPDATE "
+			+ "			document "
+			+ "SET "
+			+ "			active = false "
+			+ "WHERE "
+			+ "			id = #{id} "
+			+ "</script>")
+	int disableDocument(int id);
 }

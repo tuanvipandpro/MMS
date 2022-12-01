@@ -1,6 +1,7 @@
 package dev.tuanlm.demo.service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -30,6 +31,22 @@ public class DocumentServiceImp implements DocumentService {
 				LocalDate.of(year, 1, 1), 
 				LocalDate.of(year, 12, 31), 
 				repository.getReferenceById(user_id).getArea().getId());
+	}
+
+	@Override
+	public int updateDocument(Document doc) {
+		return mapper.updateDocument(doc);
+	}
+
+	@Override
+	public int disableDocument(int id) {
+		return mapper.disableDocument(id);
+	}
+
+	@Override
+	public int createDocument(Document doc) {
+		doc.setCreate_date(new Date());
+		return mapper.insertDocument(doc);
 	}
 	
 }

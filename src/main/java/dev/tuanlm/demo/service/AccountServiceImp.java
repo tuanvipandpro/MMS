@@ -45,6 +45,7 @@ public class AccountServiceImp implements AccountService, UserDetailsService{
 		UserAccount ua = accountRepository.findByUsername(request.getUsername());
 		return passwordEncoder.matches(request.getPassword(), ua.getPassword()) 
 				? new LoginResponse(
+						ua.getId(),
 						JwtUtils.generateJwtToken(request.getUsername()), 
 						request.getUsername(), 
 						ua.getArea().getId(),

@@ -23,6 +23,24 @@ export const useDocumentStore = defineStore('document', {
       })
 
       return res.data
+    },
+    async insertDocument (document) {
+      const url = `${API}/create`
+      const res = await axios.post(url, document)
+
+      return res.data
+    },
+    async updateDocument (document) {
+      const url = `${API}/update`
+      const res = await axios.put(url, document)
+
+      return res.data
+    },
+    async deleteDocument (id) {
+      const url = `${API}/delete/${id}`
+      const res = await axios.delete(url)
+
+      return res.data
     }
   }
 })

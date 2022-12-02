@@ -41,6 +41,7 @@ public interface DocumentMapper {
 			+ "		area							AS A   	"
 			+ "WHERE "
 			+ "		D.user_id = US.id "
+			+ "		AND D.active = true "
 			+ "		AND US.area_id = A.id "
 			+ "		AND D.type = #{type} "
 			+ "		AND US.area_id = #{area_id} "

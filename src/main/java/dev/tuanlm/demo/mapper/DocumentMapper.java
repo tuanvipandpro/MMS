@@ -3,8 +3,8 @@ package dev.tuanlm.demo.mapper;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -56,7 +56,7 @@ public interface DocumentMapper {
 			@Param("to") LocalDate to, 
 			@Param("area_id") int area_id);
 	
-	@Insert("<script> "
+	@Select("<script> "
 			+ "INSERT INTO "
 			+ "			document("
 			+ "					code, "
@@ -91,7 +91,9 @@ public interface DocumentMapper {
 			+ "					#{document.signed}, "
 			+ "					#{document.receive_num} "
 			+ ") "
+			+ "RETURNING id "
 			+ "</script>")
+	@Options(flushCache = Options.FlushCachePolicy.TRUE)
 	int insertDocument(@Param("document") Document document);
 	
 	@Update("<script> "

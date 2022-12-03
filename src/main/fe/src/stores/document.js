@@ -26,6 +26,8 @@ export const useDocumentStore = defineStore('document', {
     },
     async insertDocument (document) {
       const url = `${API}/create`
+      const user = JSON.parse(sessionStorage.getItem('user'))
+      document.user_id = user.id
       const res = await axios.post(url, document)
 
       return res.data

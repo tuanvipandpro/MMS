@@ -32,12 +32,14 @@
                   <el-table-column prop="date" label="Ngày" width="100"/>
                   <el-table-column prop="title" label="Trích yếu" width="220">
                     <template #default="scope">
-                      <el-popover placement="top-start" trigger="hover" :width="500">
+                      <el-popover placement="top-start" trigger="click" :width="500">
                         <template #reference>
-                          {{ scope.row.title.length <= 30 ? scope.row.title : `${scope.row.title.substring(0, 25)} ...` }}
+                          <span>
+                            {{ scope.row.title.length < 25 ? scope.row.title : `${scope.row.title.substring(0, 25)} ...` }}
+                          </span>
                         </template>
                         <template #default>
-                          <h3>{{ scope.row.title }}</h3>
+                          <h3><span>{{ scope.row.title }}</span></h3>
                           <div style="font-size: medium;"><strong>Số bản</strong> : {{ scope.row.copies }}</div>
                           <div style="font-size: medium;"><strong>Số tờ</strong> : {{ scope.row.pages }}</div>
                         </template>
@@ -48,10 +50,10 @@
                   <el-table-column prop="copies" label="Số bản" width="80"/> -->
                   <el-table-column prop="secret" label="Mật" width="80">
                     <template #default="scope">
-                      {{ scope.row.secret ? 'Mật' : 'Không'}}
+                      {{ scope.row.secret ? 'Mật' : ''}}
                     </template>
                   </el-table-column>
-                  <el-table-column prop="recipients" label="Nơi nhận" />
+                  <el-table-column prop="recipients" label="Nơi nhận"/>
                   <el-table-column prop="notes" label="Ghi chú" />
                   <el-table-column label="" fixed="right" width="180">
                     <template #default="scope">
@@ -86,12 +88,14 @@
                   <el-table-column prop="agency_issued" label="CQ Ban Hành" />
                   <el-table-column prop="title" label="Trích yếu" width="250">
                     <template #default="scope">
-                      <el-popover placement="top-start" trigger="hover" :width="500">
+                      <el-popover placement="top-start" trigger="click" :width="500">
                         <template #reference>
-                          {{ scope.row.title.length <= 30 ? scope.row.title : `${scope.row.title.substring(0, 25)} ...` }}
+                          <span>
+                            {{ scope.row.title.length < 25 ? scope.row.title : `${scope.row.title.substring(0, 25)} ...` }}
+                          </span>
                         </template>
                         <template #default>
-                          <h3>{{ scope.row.title }}</h3>
+                          <h3><span style="word-break: keep-all;">{{ scope.row.title }}</span></h3>
                           <div style="font-size: medium;"><strong>Số bản</strong> : {{ scope.row.copies }}</div>
                           <div style="font-size: medium;"><strong>Số tờ</strong> : {{ scope.row.pages }}</div>
                         </template>
@@ -133,15 +137,15 @@
   </div>
   <el-dialog :title="`Thêm Mới Công Văn ${type === '0' ? 'Đến' : 'Đi'}`" v-model="openDialog">
     <div v-if="type === '0'">
-      <el-form :model="form" :rules="rulesType0" label-width="100px">
-        <el-form-item label="Số đến"><el-input-number v-model="form.receive_num"/></el-form-item>
-        <el-form-item label="Số VB đến"><el-input v-model="form.code"/></el-form-item>
-        <el-form-item label="Ngày CV"><el-date-picker v-model="form.date"/></el-form-item>
-        <el-form-item label="CQ Ban hành"><el-input v-model="form.agency_issued"/></el-form-item>
-        <el-form-item label="Trích yếu"><el-input v-model="form.title"/></el-form-item>
-        <el-form-item label="Số trang"><el-input-number v-model="form.pages" :min="1"/></el-form-item>
-        <el-form-item label="Số bản"><el-input-number v-model="form.copies" :min="1"/></el-form-item>
-        <el-form-item label="Mật"><el-switch v-model="form.secret"/></el-form-item>
+      <el-form ref="formRef" :model="form" :rules="rulesType0" status-icon label-width="120px">
+        <el-form-item label="Số đến" prop="receive_num"><el-input-number v-model="form.receive_num"/></el-form-item>
+        <el-form-item label="Số VB đến" prop="code"><el-input v-model="form.code"/></el-form-item>
+        <el-form-item label="Ngày CV" prop="date"><el-date-picker v-model="form.date"/></el-form-item>
+        <el-form-item label="CQ Ban hành" prop="agency_issued"><el-input v-model="form.agency_issued"/></el-form-item>
+        <el-form-item label="Trích yếu" prop="title"><el-input v-model="form.title"/></el-form-item>
+        <el-form-item label="Số trang" prop="pages"><el-input-number v-model="form.pages" :min="1"/></el-form-item>
+        <el-form-item label="Số bản" prop="copies"><el-input-number v-model="form.copies" :min="1"/></el-form-item>
+        <el-form-item label="Mật" prop="secret"><el-switch v-model="form.secret"/></el-form-item>
         <el-form-item label="Trả bảo mật"><el-switch v-model="secretFormSwitch"/></el-form-item>
         <!-- <h4>Trả bảo mật</h4> -->
         <div v-if="secretFormSwitch">
@@ -149,23 +153,31 @@
           <el-form-item label="Ký nhận"><el-switch v-model="form.signed"/></el-form-item>
         </div>
         <el-form-item>
-          <el-button type="primary" @click="onSubmitForm">Xác nhận</el-button>
+          <el-popconfirm title="Bạn có chắc chắn muốn cập nhật văn bản này?" @confirm="onSubmitForm(formRef)">
+            <template #reference>
+              <el-button type="primary">Xác nhận</el-button>
+            </template>
+          </el-popconfirm>
           <el-button @click="(openDialog = false)">Hủy Bỏ</el-button>
         </el-form-item>
       </el-form>
     </div>
     <div v-else>
-      <el-form :model="form" :rules="rulesType1" label-width="100px">
-        <el-form-item label="Số CV"><el-input v-model="form.code"/></el-form-item>
-        <el-form-item label="Ngày CV"><el-date-picker v-model="form.date"/></el-form-item>
-        <el-form-item label="Trích yếu"><el-input v-model="form.title"/></el-form-item>
-        <el-form-item label="Số trang"><el-input-number v-model="form.pages" :min="1"/></el-form-item>
-        <el-form-item label="Số bản"><el-input-number v-model="form.copies" :min="1"/></el-form-item>
+      <el-form ref="formRef" :model="form" :rules="rulesType1" label-width="120px">
+        <el-form-item label="Số CV" prop="code"><el-input v-model="form.code"/></el-form-item>
+        <el-form-item label="Ngày CV" prop="date"><el-date-picker v-model="form.date"/></el-form-item>
+        <el-form-item label="Trích yếu" prop="title"><el-input v-model="form.title"/></el-form-item>
+        <el-form-item label="Số trang" prop="pages"><el-input-number v-model="form.pages" :min="1"/></el-form-item>
+        <el-form-item label="Số bản" prop="copies"><el-input-number v-model="form.copies" :min="1"/></el-form-item>
         <el-form-item label="Mật"><el-switch v-model="form.secret"/></el-form-item>
-        <el-form-item label="Nơi nhận"><el-input v-model="form.recipients"/></el-form-item>
+        <el-form-item label="Nơi nhận" prop="recipients"><el-input v-model="form.recipients"/></el-form-item>
         <el-form-item label="Ghi chú"><el-input v-model="form.notes"/></el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmitForm">Xác nhận</el-button>
+          <el-popconfirm title="Bạn có chắc chắn muốn cập nhật văn bản này?" @confirm="onSubmitForm(formRef)">
+            <template #reference>
+              <el-button type="primary">Xác nhận</el-button>
+            </template>
+          </el-popconfirm>
           <el-button @click="(openDialog = false)">Hủy Bỏ</el-button>
         </el-form-item>
       </el-form>
@@ -186,6 +198,7 @@ const router = useRouter()
 // const year = ref(new Date().getFullYear() + '')
 const year = ref('')
 const type = ref('1')
+const formRef = ref()
 const tableLoading = ref(false)
 const openDialog = ref(false)
 const secretFormSwitch = ref(false)
@@ -205,15 +218,20 @@ const form = ref({
   signed: false
 })
 
+let isCreate = false
+
 const commonRules = {
   code: [{ required: true, message: 'Vui lòng nhập Số CV', trigger: 'blur' }],
   date: [{ required: true, message: 'Vui lòng nhập Ngày CV', trigger: 'blur' }],
-  title: [{ required: true, message: 'Vui lòng nhập trích yếu', trigger: 'blur' }]
+  title: [{ required: true, message: 'Vui lòng nhập trích yếu', trigger: 'blur' }],
+  pages: [{ required: true, message: 'Vui lòng nhập số trang', trigger: 'blur' }],
+  copies: [{ required: true, message: 'Vui lòng nhập số bản', trigger: 'blur' }]
 }
 
 const rulesType0 = ref({
   ...commonRules,
-  agency_issued: [{ required: true, message: 'Cơ quan ban hành không thể để trống', trigger: 'blur' }]
+  agency_issued: [{ required: true, message: 'Cơ quan ban hành không thể để trống', trigger: 'blur' }],
+  receive_num: [{ required: true, message: 'Vui lòng nhập số công văn đến', trigger: 'blur' }]
 })
 
 const rulesType1 = ref({
@@ -222,20 +240,22 @@ const rulesType1 = ref({
 })
 
 const openCreateDialog = () => {
+  isCreate = true
   openDialog.value = true
   form.value = {
     code: '',
+    type: type.value,
     date: new Date(),
     title: '',
     pages: 1,
     copies: 1,
     secret: false,
-    recipients: '',
-    notes: '',
-    receive_num: 1,
-    agency_issued: '',
-    return_date: new Date(),
-    signed: false
+    recipients: undefined,
+    notes: undefined,
+    receive_num: undefined,
+    agency_issued: undefined,
+    return_date: undefined,
+    signed: undefined
   }
 }
 
@@ -285,22 +305,35 @@ const getDocument = async () => {
   }
 }
 
-const onSubmitForm = async () => {
-  const loading = ElLoading.service({
-    lock: true,
-    text: 'Loading',
-    background: 'rgba(0, 0, 0, 0.7)'
+const onSubmitForm = async (formInstance) => {
+  await formInstance.validate(async (valid, fields) => {
+    if (valid) {
+      const loading = ElLoading.service({
+        lock: true,
+        text: 'Loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
+      form.value.date = moment(form.value.date).format('YYYY-MM-DD')
+      try {
+        if (isCreate) {
+          const id = await useDocumentStore().insertDocument(form.value)
+          form.value.id = id
+          await getDocument()
+        } else {
+          await useDocumentStore().updateDocument(form.value)
+          tableData.value[form.value.index] = form.value
+        }
+      } catch (e) {
+        console.error(e)
+      } finally {
+        loading.close()
+        openDialog.value = false
+        isCreate = false
+      }
+    } else {
+      console.error('error submit!', fields)
+    }
   })
-  try {
-    form.value.date = moment(form.value.date).format('YYYY-MM-DD')
-    await useDocumentStore().updateDocument(form.value)
-    tableData.value[form.value.index] = form.value
-  } catch (e) {
-    await useDocumentStore().updateDocument(form.value)
-  } finally {
-    loading.close()
-    openDialog.value = false
-  }
 }
 
 const deleteDocument = async (id, index) => {
@@ -312,6 +345,7 @@ const deleteDocument = async (id, index) => {
   try {
     await useDocumentStore().deleteDocument(id)
     tableData.value.splice(index, 1)
+    // await getDocument()
   } catch (e) {
     console.error(e)
   } finally {

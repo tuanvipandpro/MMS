@@ -8,6 +8,10 @@ group = 'dev.tuanlm.mms'
 version = '1.0.0'
 sourceCompatibility = '17'
 
+bootJar {
+	archiveFileName = "mms.jar"
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -25,6 +29,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'net.sf.jasperreports:jasperreports:6.20.0'
+	implementation 'net.sf.jasperreports:jasperreports-fonts:6.20.0'	
+	implementation 'com.lowagie:itext:2.1.7'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'

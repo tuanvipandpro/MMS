@@ -27,6 +27,12 @@ export const usePeopleStore = defineStore('people', {
       })
 
       return res.data
+    },
+    async getDocumentForPeople (id) {
+      const url = `${API}/get-report/${id}`
+      const res = await axios.get(url, { responseType: 'arraybuffer' })
+
+      return res
     }
   }
 })

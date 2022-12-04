@@ -11,8 +11,6 @@ import dev.tuanlm.demo.models.People;
 @Repository
 public interface PeopleRepository extends JpaRepository<People, Integer> {
 	List<People> findAllByAreaId(int area_id, Pageable pageable);
-	
-	
-	
+
 	int countByAreaId(int area_id);
 }

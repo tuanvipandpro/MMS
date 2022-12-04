@@ -60,14 +60,16 @@
                 <div class="cell">Thao tác</div>
               </template>
               <template #default="scope">
-                <el-button type="info" :icon="Edit" @click="handleEdit(scope.$index, scope.row)" plain></el-button>
+                <el-button type="info" :icon="Tickets" @click="getReportForPeople(scope.row.id)" plain circle></el-button>
+                <el-button type="info" :icon="Edit" @click="handleEdit(scope.$index, scope.row)" plain circle></el-button>
                 <el-popconfirm
                   confirm-button-text="Yes"
                   cancel-button-text="No"
                   title="Bạn có chắc chắn muốn xóa ?"
+                  @confirm="handleDelete(scope.$index, scope.row)"
                 >
                   <template #reference>
-                    <el-button type="danger" :icon="Delete" @click="handleDelete(scope.$index, scope.row)"></el-button>
+                    <el-button type="danger" :icon="Delete" circle plain></el-button>
                   </template>
                 </el-popconfirm>
               </template>
@@ -89,12 +91,12 @@
   </el-dialog>
 </template>
 <script setup>
-
+import download from 'downloadjs'
 import moment from 'moment'
 import Menu from '../components/CommonMenu.vue'
 import { usePeopleStore } from '../stores/people'
 import { useAreaStore } from '../stores/area'
-import { Search, Plus, Edit, Delete } from '@element-plus/icons-vue'
+import { Search, Plus, Edit, Delete, Tickets } from '@element-plus/icons-vue'
 import { onBeforeMount, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -140,6 +142,13 @@ const searchByFullname = async () => {
 
   tableLoading.value = true
   handlePeopleResponse(await usePeopleStore().getPeople(fullnameSearch, quarterSearch, from, to, pageNo.value - 1, pageNum.value))
+}
+
+const getReportForPeople = async (id) => {
+  const res = await usePeopleStore().getDocumentForPeople(id)
+  if (res) {
+    download(res.data, `${(Math.random() * 100000).toFixed(0)}.docx`, res.headers['content-type'])
+  }
 }
 
 const handleEdit = async (index, row) => {

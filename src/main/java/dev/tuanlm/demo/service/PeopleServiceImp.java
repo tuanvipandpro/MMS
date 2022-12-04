@@ -1,8 +1,14 @@
 package dev.tuanlm.demo.service;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -18,7 +24,9 @@ import dev.tuanlm.demo.models.PeopleAreaModel;
 import dev.tuanlm.demo.repository.PeopleRepository;
 import dev.tuanlm.demo.request.CreatePeopleRequest;
 import dev.tuanlm.demo.response.GetPeopleResponse;
+import dev.tuanlm.demo.utils.JasperUtils;
 import lombok.AllArgsConstructor;
+import net.sf.jasperreports.engine.JRException;
 
 @Service
 @Transactional
@@ -88,6 +96,22 @@ public class PeopleServiceImp implements PeopleService {
 	@Override
 	public int insertPeople(PeopleAreaModel p) {
 		return peopleMapper.insertPeople(p);
+	}
+
+	@Override
+	public byte[] getPeopleReport(int people_id) throws JRException, IOException {
+		String reportUrlFile = JasperUtils.REPORT_PATH + "PeopleReport.jrxml";
+		
+		People people = peopleRepository.getReferenceById(people_id);
+		
+		if (people == null) {
+			throw new JRException("Data is empty to export report !!!");
+		}
+		
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("nowTime", LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		
+		return JasperUtils.generateDocxReport(reportUrlFile, List.of(people), parameters);
 	}
 
 }

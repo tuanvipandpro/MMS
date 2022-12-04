@@ -1,10 +1,12 @@
 package dev.tuanlm.demo.service;
 
+import java.io.IOException;
 import java.util.Date;
 
 import dev.tuanlm.demo.models.PeopleAreaModel;
 import dev.tuanlm.demo.request.CreatePeopleRequest;
 import dev.tuanlm.demo.response.GetPeopleResponse;
+import net.sf.jasperreports.engine.JRException;
 
 public interface PeopleService {
 	
@@ -17,4 +19,6 @@ public interface PeopleService {
 	int deletePeople(int people_id);
 	
 	int insertPeople(PeopleAreaModel p);
+	
+	byte[] getPeopleReport(int people_id) throws JRException, IOException;
 }

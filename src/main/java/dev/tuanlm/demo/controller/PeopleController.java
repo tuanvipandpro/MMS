@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -59,5 +60,16 @@ public class PeopleController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Integer> deletePeople(@PathVariable int id) {
 		return new ResponseEntity<Integer>(service.deletePeople(id), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/get-report/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public ResponseEntity<byte[]> getPeopleReport(@PathVariable int id) {
+		try {
+			return new ResponseEntity<byte[]>(service.getPeopleReport(id), HttpStatus.OK);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<byte[]>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }

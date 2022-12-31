@@ -111,7 +111,8 @@ public class PeopleServiceImp implements PeopleService {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("nowTime", LocalDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 		
-		return JasperUtils.generateDocxReport(reportUrlFile, List.of(people), parameters);
+//		return JasperUtils.generateDocxReport(reportUrlFile, List.of(people), parameters);
+		return JasperUtils.generatePDFReport(reportUrlFile, List.of(people), parameters);
 	}
 
 }

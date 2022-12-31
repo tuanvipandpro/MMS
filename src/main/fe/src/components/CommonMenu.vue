@@ -8,10 +8,17 @@
         text-color="#fff"
         style="min-height: 100vh;"
       >
-        <el-menu-item index="1" @click="transitTo('/home')">
-          <el-icon><icon-menu /></el-icon>
-          <span>Quản lý thanh niên</span>
-        </el-menu-item>
+        <el-sub-menu index="1">
+          <template #title>
+            <el-icon><list /></el-icon>
+            <span>Động viên tuyển quân</span>
+          </template>
+          <el-menu-item index="1-1" @click="transitTo('/home')">Danh sách thanh niên</el-menu-item>
+          <el-menu-item index="1-2" @click="transitTo('/folder')">Quản lý nguồn</el-menu-item>
+          <el-menu-item index="1-3" @click="transitTo('/military')">Dân quân tự vệ</el-menu-item>
+          <!-- <el-icon><icon-menu /></el-icon>
+          <span>Quản lý thanh niên</span> -->
+        </el-sub-menu>
         <el-menu-item index="2" @click="transitTo('/document')">
           <el-icon><Document /></el-icon>
           <span>Quản lý văn bản</span>
@@ -21,7 +28,7 @@
             <el-icon><setting /></el-icon>
             <span>Cài đặt</span>
           </template>
-          <el-menu-item index="3-1" @click="transitTo('/folder')">Danh sách của bạn</el-menu-item>
+          <!-- <el-menu-item index="3-1" @click="transitTo('/folder')">Danh sách của bạn</el-menu-item> -->
           <el-menu-item index="3-2" @click="logout">Đăng xuất</el-menu-item>
         </el-sub-menu>
       </el-menu>
@@ -29,8 +36,9 @@
 </template>
 <script setup>
 import {
-  Menu as IconMenu,
+  // Menu as IconMenu,
   Document,
+  List,
   Setting
 } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
@@ -40,7 +48,7 @@ const router = useRouter()
 
 // eslint-disable-next-line no-unused-vars
 const props = defineProps({
-  defaultActive: Number
+  defaultActive: String
 })
 
 const transitTo = (screen) => {

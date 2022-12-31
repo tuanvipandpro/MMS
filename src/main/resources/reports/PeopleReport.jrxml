@@ -1,21 +1,410 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PeopleReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0fb3e791-2d57-4080-942b-eaca31bbb8d0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PeopleReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5a87b74-6768-48f0-9c6e-4e44ad0cb288">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
-	<queryString>
-		<![CDATA[]]>
-	</queryString>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="101" splitType="Stretch">
+		<band height="555" splitType="Stretch">
+			<staticText>
+				<reportElement x="504" y="0" width="270" height="20" uuid="97eef24c-bd91-45fc-8c77-b1fd7bf5cf16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="550" y="14" width="150" height="20" uuid="dcad780b-b1cb-47d7-ad56-c173f3e5004b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Độc lập - Tự do - Hạnh Phúc]]></text>
+			</staticText>
+			<line>
+				<reportElement x="555" y="27" width="123" height="1" uuid="1f54da02-e4fe-4939-9322-5c562543898e"/>
+			</line>
+			<staticText>
+				<reportElement x="560" y="49" width="110" height="30" uuid="9e465cb5-20fa-4253-850d-dc4a97264088"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LÝ LỊCH
+NGHĨA VỤ QUÂN SỰ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="708" y="28" width="110" height="31" uuid="eed77cc5-ee85-4aa8-8545-b35f65545680"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Biểu số: 08/GNN-2016
+Khổ biểu: 29x42]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="100" width="120" height="20" uuid="718f3493-099f-4df1-8e9e-0b8ecbf67d31"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[I. SƠ YẾU LÝ LỊCH]]></text>
+			</staticText>
+			<line>
+				<reportElement x="579" y="79" width="70" height="1" uuid="6e1708bf-03d5-4767-8d5c-7f38ac00dd42"/>
+			</line>
+			<staticText>
+				<reportElement x="410" y="120" width="150" height="20" uuid="18b5ac48-d726-44c1-8034-8f812b6ef4e2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Họ, chữ đệm và tên khai sinh:]]></text>
+			</staticText>
 			<rectangle>
-				<reportElement x="-10" y="10" width="81" height="91" uuid="a7a26ce0-c9f6-4e7a-a232-49831e0264d5"/>
+				<reportElement x="440" y="25" width="60" height="70" uuid="21ab1f2b-6003-4e1f-895c-d1db870842e3"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="140" y="10" width="241" height="51" uuid="4da9d754-b59c-46a1-ab05-997a5f31ff5a"/>
-				<text><![CDATA[Sơ yếu lý lịch]]></text>
+				<reportElement x="410" y="135" width="150" height="20" uuid="a67140e6-ad1b-41cc-81c9-41a72f27e467"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Họ, chữ đệm và tên thường dùng:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="150" width="60" height="18" uuid="b21923c4-2cf5-4e63-8a1f-61c1f2f0795f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Sinh ngày:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="150" width="60" height="18" uuid="4ffce387-1f21-4274-8e78-f906b32d203e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Giới tính:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="165" width="160" height="18" uuid="42681a38-1648-4544-89ae-e2ab363eaaa7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Số CMND hoặc số thẻ căn cước]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="180" width="160" height="18" uuid="bf0d5e01-7017-4933-9f8a-13ad696cd3b4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nơi đăng ký khai sinh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="195" width="160" height="18" uuid="7e55e7c1-303b-45df-b4b6-be87d4d85dcf"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Quê quán]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="210" width="80" height="18" uuid="d8b698ba-31b1-4260-a329-51c2e8c8fec1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Dân tộc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="210" width="80" height="18" uuid="d8b698ba-31b1-4260-a329-51c2e8c8fec1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Tôn giáo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="210" width="80" height="18" uuid="d8b698ba-31b1-4260-a329-51c2e8c8fec1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Quốc tịch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="225" width="160" height="18" uuid="de51719b-4128-45fc-968d-5accb6085905"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nơi thường trú của gia đình]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="240" width="160" height="18" uuid="b6e4f805-c02c-42e5-9adf-1d764f7f8397"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nơi ở hiện tại của bản thân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="255" width="160" height="18" uuid="2655114f-009e-41df-9e27-0aa90aafd526"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Thành phần gia đình]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="255" width="100" height="18" uuid="2655114f-009e-41df-9e27-0aa90aafd526"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Bản thân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="270" width="160" height="18" uuid="e74e0621-9ed2-47ae-adce-0d194a7603a7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Trình độ văn hóa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="285" width="100" height="18" uuid="e74e0621-9ed2-47ae-adce-0d194a7603a7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Chuyên ngành đào tạo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="285" width="160" height="18" uuid="b448022a-51e0-443d-b529-64593883671b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Trình độ chuyên môn]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="300" width="160" height="18" uuid="dd5ee447-0500-482e-bb48-a91bccf42567"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngoại ngữ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="315" width="160" height="18" uuid="7b25c1e4-36fa-483e-a0f1-e588c3f72798"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngày vào Đảng CSVN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="315" width="160" height="18" uuid="7b25c1e4-36fa-483e-a0f1-e588c3f72798"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Chính thức]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="330" width="160" height="18" uuid="6bc5535f-3291-43f1-a462-9b340bc56a29"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngày vào Đoàn TNCS ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="345" width="160" height="18" uuid="1e645488-4018-4434-9cd5-d163b2000bf1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Khen thưởng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="345" width="160" height="18" uuid="1e645488-4018-4434-9cd5-d163b2000bf1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Kỷ luật]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="360" width="160" height="18" uuid="e0c427a9-161a-4da4-bab8-e372ea75aacd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nghề nghiệp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="360" width="80" height="18" uuid="e0c427a9-161a-4da4-bab8-e372ea75aacd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Lương: Ngạch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="750" y="360" width="80" height="18" uuid="e0c427a9-161a-4da4-bab8-e372ea75aacd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Bậc: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="375" width="160" height="18" uuid="8d091808-d748-4f6a-b26d-fe78abf237fc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Họ tên mẹ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="390" width="160" height="18" uuid="4935c214-087e-46fb-b1d8-fb7c2cc44e33"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Sinh ngày]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="390" width="160" height="18" uuid="4935c214-087e-46fb-b1d8-fb7c2cc44e33"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nghề nghiệp: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="405" width="160" height="18" uuid="88618708-664a-446d-a385-0a528f96c802"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nơi làm việc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="420" width="160" height="18" uuid="5a604878-0425-4f59-8a1a-a7dfe4935e64"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Sinh ngày]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="420" width="160" height="18" uuid="4935c214-087e-46fb-b1d8-fb7c2cc44e33"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nghề nghiệp: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="435" width="160" height="18" uuid="66cfa299-79f6-4453-8c38-e3fdf24f6b05"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Họ tên vợ (chồng)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="435" width="160" height="18" uuid="4935c214-087e-46fb-b1d8-fb7c2cc44e33"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Sinh ngày	tháng	năm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="450" width="160" height="18" uuid="be123652-cb86-4105-8e2d-b1b76f8af8a4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nghề nghiệp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="450" width="160" height="18" uuid="be123652-cb86-4105-8e2d-b1b76f8af8a4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Bản thân đã có 0 con]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="465" width="330" height="18" uuid="f580e103-f8f7-4770-a13e-fef0f419b741"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Cha mẹ có 03 người con, 01 trai, 02 gái; bản thân là con thứ 01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="160" height="20" uuid="6ba81102-b58b-467e-bcba-d3be354e0338"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[V. Ý KIẾN CỦA CÁN BỘ THẨM TRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="14" width="370" height="14" uuid="e14ccaae-1de9-4f77-b66f-c143f6f34028"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(Về lai lịch chính trị gia đình, tiêu chuẩn của công dân đủ điều kiện nhập ngũ hay không)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="27" width="390" height="47" uuid="23b41c98-a6b1-4cdb-b7fb-6f5da36489ba"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nguồn gốc thành phần lịch sử chính trị của gia đình và bản thân thanh niên rõ ràng. Chấp hành tốt chủ trương, đường lối của Đảng, chính sách, pháp luật Nhà nước và các quy định của địa phương. Đủ điều kiện nhập ngũ năm 2023.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="70" width="150" height="20" uuid="b03f1c24-37da-4748-a01c-23802effd479"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngày	     tháng         năm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="83" width="160" height="20" uuid="0d9ccede-45db-4814-9bd8-82f6c4d94245"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÁN BỘ THẨM TRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="145" width="320" height="20" uuid="65d18065-94c3-46f5-b0df-880f539128b5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VI. KẾT LUẬN CỦA CƠ QUAN QUÂN SỰ THÀNH PHỐ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="390" height="68" uuid="2bfa843d-a706-4b98-87d3-4adfe4dd12fb"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[	Lý lịch của gia đình và bản thân thanh niên cơ bản rõ ràng, chấp hành tốt chủ trương, đường lối của Đảng, chính sách, pháp luật Nhà nước và các quy định của địa phương.
+	Thanh niên có phẩm chất, đạo đức tốt, lối sống trong sạch, lành mạnh không vi phạm pháp luật Nhà nước, đủ điều kiện nhập ngũ 2023.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="230" width="150" height="20" uuid="1fa9a724-ca6b-4ca6-b8ed-6d4113d2b9e5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngày	     tháng         năm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="243" width="160" height="20" uuid="10003f1a-dd92-4166-8d73-f839ea5c7e6b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CHỈ HUY TRƯỞNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="298" width="320" height="32" uuid="ddbbf38b-55e8-4cfb-9248-161924f16a67"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VII. KẾT LUẬN CỦA HỘI ĐỒNG NVQS THÀNH PHỐ
+TRƯỚC KHI CÔNG DÂN NHẬP NGŨ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="325" width="390" height="68" uuid="b3979345-a5b7-439b-a9b9-afe098c8157a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[	Nhất trí với nhận xét đề nghị của phường An Phú và kết luận của cơ quan quân sự thành phố về lý lịch gia đình và bản thân thanh niên. Chấp hành tốt các chủ trương của Đảng, chính sách và pháp luật Nhà nước, quy định của địa phương nơi cư trú.
+	Thanh niên có phẩm chất tốt, lối sống trong sạch, lành mạnh, đủ điều kiện nhập ngũ năm 2023.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="388" width="150" height="20" uuid="8f76e8b2-30e4-462d-91a4-c8a158b8d1d7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngày	     tháng         năm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="403" width="210" height="20" uuid="5c9fb0de-51db-49a5-837c-b4c907155f9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM. HỘI ĐỒNG NGHĨA VỤ QUÂN SỰ]]></text>
 			</staticText>
 		</band>
 	</detail>

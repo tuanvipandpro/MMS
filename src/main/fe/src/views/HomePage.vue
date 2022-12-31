@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-aside style="width: 18vw">
-        <Menu default-active="1"></Menu>
+        <Menu default-active="1-1"></Menu>
       </el-aside>
       <el-container>
         <el-main>
@@ -47,7 +47,7 @@
             border
             v-loading="tableLoading"
             stripe
-            style="width: 100%; height: 55vh"
+            style="width: 100%; height: 65vh"
           >
           <el-table-column type="selection" width="55" />
             <el-table-column prop="id" label="ID" width="80" />
@@ -81,6 +81,7 @@
             :total="total"
             :page-size="pageNum"
             style="margin-top: 10px"
+            @current-change="pageChange"
             />
         </el-main>
       </el-container>
@@ -105,7 +106,7 @@ const router = useRouter()
 const date = ref('')
 const total = ref('')
 const pageNo = ref(1)
-const pageNum = ref(5)
+const pageNum = ref(10)
 const search = ref('')
 const tableData = ref('')
 const quarterData = ref('')
@@ -142,6 +143,11 @@ const searchByFullname = async () => {
 
   tableLoading.value = true
   handlePeopleResponse(await usePeopleStore().getPeople(fullnameSearch, quarterSearch, from, to, pageNo.value - 1, pageNum.value))
+}
+
+const pageChange = async (page) => {
+  pageNo.value = page
+  await searchByFullname()
 }
 
 const getReportForPeople = async (id) => {

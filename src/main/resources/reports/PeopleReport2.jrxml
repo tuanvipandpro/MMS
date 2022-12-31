@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PeopleReport2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8faf1342-a430-4e53-ab4a-c94b2c8851d6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="555" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="280" height="20" uuid="6ba81102-b58b-467e-bcba-d3be354e0338"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[II. TÌNH HÌNH KINH TẾ, CHÍNH TRỊ CỦA GIA ĐÌNH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="14" width="370" height="36" uuid="e14ccaae-1de9-4f77-b66f-c143f6f34028"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[  (Của cha, mẹ đẻ hoặc người trực tiếp nuôi dưỡng của bản thân và của vợ hoặc chồng; anh chị em ruột, con nuôi theo quy định của pháp luật; Họ, tên; năm sinh, nghề nghiệp, tình hình kinh tế, chính trị của từng người qua các thời kỳ đến nay)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="0" width="382" height="30" uuid="e4b03bac-66ad-43b9-acc2-41eacfdce812"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[III. TÌNH HÌNH KINH TẾ, CHÍNH TRỊ, QUÁ TRÌNH CÔNG TÁC CỦA BẢN THÂN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="26" width="370" height="20" uuid="2fe3326f-f1da-4e9a-a300-1f9bb78becc1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[  (Nêu thời gian, kết quả học tập, rèn luyện phấn đấu từ nhỏ đến thời điểm nhập ngũ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="250" width="382" height="20" uuid="f3b40d34-cee4-4f2f-b83d-337bcbf5470f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IV. NHẬN XÉT VÀ ĐỀ NGHỊ CỦA CHÍNH QUYỀN CẤP XÃ, PHƯỜNG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="270" width="390" height="47" uuid="23b41c98-a6b1-4cdb-b7fb-6f5da36489ba"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Nguồn gốc thành phần lịch sử chính trị của gia đình và bản thân thanh niên rõ ràng. Chấp hành tốt chủ trương, đường lối của Đảng, chính sách, pháp luật Nhà nước và các quy định của địa phương. Đủ điều kiện nhập ngũ năm 2023.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="419" y="270" width="383" height="70" uuid="e34d5a62-6e82-4732-96d0-dc16f568d034"/>
+				<textElement>
+					<font fontName="VN-TimesNewRoman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lý lịch chính trị của gia đình và thanh niên" + " cơ bản rõ ràng. Chấp hành tốt chủ trương, đường lối của Đảng, chính sách, pháp luật Nhà nước và các quy định của địa phương.\n Thanh niên " + " có phẩm chất, đạo đức tốt, lối sống trong sạch, lành mạnh không vi phạm pháp luật Nhà nước, đủ điều kiện nhập ngũ 2023."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="650" y="328" width="150" height="20" uuid="1fa9a724-ca6b-4ca6-b8ed-6d4113d2b9e5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ngày	     tháng         năm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="541" y="348" width="120" height="20" uuid="10003f1a-dd92-4166-8d73-f839ea5c7e6b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CHỈ HUY TRƯỞNG QS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="348" width="120" height="20" uuid="339ad1f2-c97c-4a8e-86b3-63f3b189884e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRƯỞNG CÔNG AN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="672" y="348" width="120" height="20" uuid="f3fe04a6-d8c8-4ab2-9c97-12a389eaaace"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CHỦ TỊCH UBND]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

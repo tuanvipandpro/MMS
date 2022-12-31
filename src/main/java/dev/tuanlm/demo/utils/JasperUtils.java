@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -35,5 +36,19 @@ public class JasperUtils {
 		exporter.exportReport();
 		
 		return baos.toByteArray();
+	}
+	
+	public static byte[] generatePDFReport(String reportFile, List<?> list, Map<String, Object> parameters) throws JRException, IOException {	
+		return JasperExportManager.exportReportToPdf(JasperFillManager.fillReport(
+				JasperCompileManager.compileReport(new ClassPathResource(reportFile).getInputStream()), 
+				parameters, 
+				new JRBeanCollectionDataSource(list)));
+	}
+	
+	public static byte[] mergeBothReportToPDF(String reportFile1, String reportFile2, List<?> list, Map<String, Object> parameters) throws JRException, IOException {
+		
+		
+		
+		return null;
 	}
 }
